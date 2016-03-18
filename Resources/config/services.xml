@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="cogitech_dotpay" type="collection">
+        	<parameter key="endpoint" type="collection">
+        		<parameter key="test">https://ssl.dotpay.pl/test_seller/api/</parameter>
+        		<parameter key="prod">https://ssl.dotpay.pl/s2/login/api/</parameter>
+        	</parameter>
+        	<parameter key="default_values" type="collection">
+	        	<parameter key="firewall" type="collection">
+		            <parameter>195.150.9.37</parameter>
+	            </parameter>
+        	</parameter>        	
+        </parameter>
+    </parameters>
+    
+    <services>
+    	<service id="cg.dotpay" class="Cogitech\DotpayBundle\Util\DotpayService">
+            <argument>%cogitech_dotpay%</argument>
+        </service>
+        <service id="cg.dotpay.form.type.dotpay" class="Cogitech\DotpayBundle\Form\Type\DotpayType">
+            <tag name="form.type" alias="cg_dotpay" />
+        </service>
+        <service id="cg.dotpay.twig.dotpay" class="Cogitech\DotpayBundle\Twig\TwigDotpayExtension">
+            <argument type="service" id="form.factory" />
+            <tag name="twig.extension" />
+        </service>
+   </services>
+</container>

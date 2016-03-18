@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="cg_dotpay_create" path="/dotpay/create" methods="POST">
+        <default key="_controller">CogitechDotpayBundle:Dotpay:create</default>
+    </route>
+    <route id="cg_dotpay_thanks" path="/dotpay/thanks">
+        <default key="_controller">CogitechDotpayBundle:Dotpay:thanks</default>
+    </route>
+    <route id="cg_dotpay_confirm" path="/dotpay/confirm/{token}" methods="POST">
+        <default key="_controller">CogitechDotpayBundle:Dotpay:confirm</default>
+    </route>
+</routes>
